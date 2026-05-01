@@ -1,5 +1,6 @@
 package ru.lanit.interview.trygroovy.service.impl;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.lanit.interview.trygroovy.dto.HealthHistoryDto;
@@ -21,6 +22,11 @@ public class HealHistoryServiceImpl implements HealthHistoryService {
         HealthHistoryEntity savedEntity = healthHistoryRepository.save(healthHistoryEntity);
 
         return healthHistoryMapper.toDto(savedEntity);
+    }
+
+    @Override
+    public List<HealthHistoryDto> getHistoryByPatientId(Long id) {
+        return healthHistoryRepository.getHistoryByPatientId(id).stream().map(healthHistoryMapper::toDto).toList();
     }
 
 }
