@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: ms-medical-history
+
+  config:
+    import: "optional:consul:"
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: true
+      discovery:
+        enabled: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/medical_history
+    username: postgres
+    password: postgres
+
+server:
+  port: 8080
