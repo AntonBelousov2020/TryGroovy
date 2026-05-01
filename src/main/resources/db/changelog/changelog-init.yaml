@@ -1,7 +1,20 @@
 databaseChangeLog:
   - changeSet:
+      id: create-sequence-health-history
+      author: abelousov
+      preConditions:
+        onFail: "MARK_RAN"
+        not:
+          sequenceExists:
+            sequenceName: "health_history_changelog_seq"
+      createSequence:
+        sequenceName: "health_history_changelog_seq"
+        startValue: "1"
+        incrementBy: "1"
+
+  - changeSet:
       id: 001-create-medical-history
-      author: you
+      author: abelousov
 
       changes:
         - createTable:
