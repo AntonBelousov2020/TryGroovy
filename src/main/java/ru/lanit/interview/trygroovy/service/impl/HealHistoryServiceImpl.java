@@ -20,11 +20,7 @@ public class HealHistoryServiceImpl implements HealthHistoryService {
         HealthHistoryEntity healthHistoryEntity = healthHistoryMapper.toEntity(healthHistoryDto);
         HealthHistoryEntity savedEntity = healthHistoryRepository.save(healthHistoryEntity);
 
-        if (savedEntity != null) {
-            return healthHistoryMapper.toDto(savedEntity);
-        }
-
-        return new  HealthHistoryDto();
+        return healthHistoryMapper.toDto(savedEntity);
     }
 
 }
