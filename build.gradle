@@ -23,7 +23,7 @@ ext {
 
 dependencies {
 
-    // WEB (WAR compatible)
+    // WEB
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     // JPA + DB
