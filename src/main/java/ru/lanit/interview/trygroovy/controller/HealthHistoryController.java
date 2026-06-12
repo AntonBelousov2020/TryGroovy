@@ -3,6 +3,7 @@ package ru.lanit.interview.trygroovy.controller;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,5 +30,11 @@ public class HealthHistoryController {
     public ResponseEntity<List<HealthHistoryDto>> getHistory(@PathVariable Long patientId) {
         List<HealthHistoryDto> healthHistoryDtos = healthHistoryService.getHistoryByPatientId(patientId);
         return healthHistoryDtos.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(healthHistoryDtos);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteHistory(@PathVariable Long id) {
+        healthHistoryService.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

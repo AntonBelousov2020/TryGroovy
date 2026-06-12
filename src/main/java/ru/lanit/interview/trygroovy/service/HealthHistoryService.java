@@ -9,4 +9,6 @@ public interface HealthHistoryService {
 
     List<HealthHistoryDto> getHistoryByPatientId(Long id);
 
+    void deleteById(Long id);
+
 }

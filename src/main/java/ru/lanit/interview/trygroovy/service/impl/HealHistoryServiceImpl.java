@@ -29,4 +29,9 @@ public class HealHistoryServiceImpl implements HealthHistoryService {
         return healthHistoryRepository.getHistoryByPatientId(id).stream().map(healthHistoryMapper::toDto).toList();
     }
 
+    @Override
+    public void deleteById(Long id) {
+        healthHistoryRepository.deleteById(id);
+    }
+
 }
