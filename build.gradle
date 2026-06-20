@@ -60,3 +60,21 @@ dependencyManagement {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
+
+def frontendDir = "${projectDir}/frontend"
+def npmExe = "C:\\Program Files\\nodejs\\npm.cmd"
+
+tasks.register('npmInstall', Exec) {
+    workingDir(frontendDir)
+    commandLine npmExe, 'install'
+}
+
+tasks.register('npmBuild', Exec) {
+    workingDir(frontendDir)
+    commandLine npmExe, 'run', 'build'
+    dependsOn npmInstall
+}
+
+processResources {
+    dependsOn npmBuild
+}
