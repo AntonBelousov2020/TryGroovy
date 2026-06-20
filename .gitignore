@@ -40,3 +40,4 @@ out/
 frontend/node_modules/
 frontend/package-lock.json
 frontend/dist/
+src/main/resources/static/
